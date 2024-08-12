@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 const Navbar1 = () => {
   return (
@@ -9,7 +10,8 @@ const Navbar1 = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
+              <Link to="/">
+              <Nav.Link href="#home">Home</Nav.Link></Link>
               <Nav.Link href="#about">About Us</Nav.Link>
               <Nav.Link href="#what-we-do">What We Do</Nav.Link>
               <Nav.Link href="#contact">Contact</Nav.Link>

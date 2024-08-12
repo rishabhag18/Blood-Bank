@@ -26,6 +26,16 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           readOnly
         />
       </Form.Group>
+      <Form.Group controlId="state">
+        <Form.Label>Area</Form.Label>
+        <Form.Control
+          type="text"
+          name="area"
+          value={formData.area}
+          onChange={handleInputChange}
+          readOnly
+        />
+      </Form.Group>
 
       <Form.Group controlId="district">
         <Form.Label>District</Form.Label>

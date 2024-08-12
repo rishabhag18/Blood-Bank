@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button, Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
 function HeroSection() {
   return (
     <Container className="my-5" id="what-we-do">
@@ -13,10 +14,14 @@ function HeroSection() {
             makes it easy to find and reach out to blood donors within your
             vicinity. Join our community and help save lives.
           </p>
+          <Link to="/register">
           <Button variant="danger" className="mr-2 me-2">
             Join Now
           </Button>
-          <Button variant="secondary">Register Now</Button>
+          </Link>
+          <Link to="/login">
+          <Button variant="secondary">Log In</Button>
+          </Link>
         </Col>
         <Col lg={6}>
           <Carousel>

@@ -18,6 +18,7 @@ const RegistrationForm = () => {
     pincode: '',
     state: '',
     district: '',
+    area:"",
     bloodGroup: '',
     healthSymptoms: {
       bloodPressure: false,
@@ -50,12 +51,13 @@ const RegistrationForm = () => {
         const data = await response.json();
 
         if (data[0].Status === 'Success') {
-          const { State, District } = data[0].PostOffice[0];
+          const { State, District ,Division} = data[0].PostOffice[0];
           setFormData({
             ...formData,
             pincode:pincode,
             state: State,
             district: District,
+            area:Division,
           });
         } else {
           alert('Invalid Pincode. Please enter a valid pincode.');
@@ -63,6 +65,7 @@ const RegistrationForm = () => {
             ...formData,
             state: '',
             district: '',
+            area:Region,
           });
         }
       } catch (error) {
@@ -74,7 +77,7 @@ const RegistrationForm = () => {
   const validateDOB = () => {
     const today = new Date();
     const birthDate = new Date(formData.dob);
-    const age = today.getFullYear() - birthDate.getFullYear();
+    let age = today.getFullYear() - birthDate.getFullYear();
     const monthDiff = today.getMonth() - birthDate.getMonth();
 
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {

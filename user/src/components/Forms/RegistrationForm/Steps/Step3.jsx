@@ -29,6 +29,7 @@ const Step3 = ({ formData, handleInputChange, handlePrev, handleSubmit }) => {
       <p><strong>Pincode:</strong> {formData.pincode}</p>
       <p><strong>State:</strong> {formData.state}</p>
       <p><strong>District:</strong> {formData.district}</p>
+      <p><strong>Area:</strong> {formData.area}</p>
       <p><strong>Blood Group:</strong> {formData.bloodGroup}</p>
       <p><strong>Health Symptoms:</strong></p>
       <ul>
