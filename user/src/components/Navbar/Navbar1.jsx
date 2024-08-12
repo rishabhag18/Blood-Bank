@@ -1,27 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-export default function Navbar1() {
+const Navbar1 = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" className="d-inline-block align-text-top"/>
-      Bootstrap
-    </a>
-  </div>
-  <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Features</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Pricing</a>
-        </li>
-      </ul>
-    </div>
-</nav>
-  )
-}
+    <Navbar bg="danger" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home"><img src="./images/logo2.png" alt="" style={{width:'200px',height:'50px'}}/></Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#home">Home</Nav.Link>
+              <Nav.Link href="#about">About Us</Nav.Link>
+              <Nav.Link href="#what-we-do">What We Do</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+  );
+};
+
+export default Navbar1;
