@@ -6,12 +6,12 @@ import Footer from "../Footer/Footer"
 //import "./Homepage.css"
 export default function Homepage() {
   return (
-
-      <div>
+    <>
       <HeroSection />
       <AboutBloodDonation />
       <AboutUs />
       <Footer />
-      </div>
+      </>
+
   )
 }
