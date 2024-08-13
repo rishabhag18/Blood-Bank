@@ -19,6 +19,7 @@ const RegistrationForm = () => {
     state: '',
     district: '',
     area:"",
+    weight:"",
     bloodGroup: '',
     healthSymptoms: {
       bloodPressure: false,
@@ -97,11 +98,33 @@ const RegistrationForm = () => {
 
   const handlePrev = () => setStep(step - 1);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
-    // Handle form submission logic here
+    
+    try {
+      const response = await fetch('http://localhost:3000/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Registration successful:', result);
+        alert('Registration successful!');
+        // Reset form or redirect user, etc.
+      } else {
+        console.error('Registration failed:', response.statusText);
+        alert('Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again later.');
+    }
   };
+  
 
   return (
     <Container className="my-5 p-4 border border-danger rounded">

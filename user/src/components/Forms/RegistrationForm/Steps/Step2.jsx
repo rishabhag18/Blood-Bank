@@ -1,10 +1,12 @@
 // Step2.js
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
 const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, handlePrev }) => {
   return (
     <>
+<Row>
+  <Col md={6}>
       <Form.Group controlId="pincode">
         <Form.Label>Pincode</Form.Label>
         <Form.Control
@@ -15,7 +17,8 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           required
         />
       </Form.Group>
-
+      </Col>
+      <Col md={6}>
       <Form.Group controlId="state">
         <Form.Label>State</Form.Label>
         <Form.Control
@@ -26,6 +29,10 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           readOnly
         />
       </Form.Group>
+      </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
       <Form.Group controlId="state">
         <Form.Label>Area</Form.Label>
         <Form.Control
@@ -36,7 +43,8 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           readOnly
         />
       </Form.Group>
-
+      </Col>
+      <Col md={6}>
       <Form.Group controlId="district">
         <Form.Label>District</Form.Label>
         <Form.Control
@@ -47,7 +55,10 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           readOnly
         />
       </Form.Group>
-
+      </Col>
+      </Row>
+      <Row>
+        <Col md={6}>
       <Form.Group controlId="bloodGroup">
         <Form.Label>Blood Group</Form.Label>
         <Form.Control
@@ -65,7 +76,20 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           ))}
         </Form.Control>
       </Form.Group>
-
+      </Col>
+      <Col md={6}>
+      <Form.Group controlId="pincode">
+        <Form.Label>Weight</Form.Label>
+        <Form.Control
+          type="text"
+          name="weight"
+          value={formData.weight}
+          onChange={handleInputChange}
+          required
+        />
+      </Form.Group>
+      </Col>
+      </Row>
       <Form.Group controlId="healthSymptoms">
         <Form.Label>Health Symptoms</Form.Label>
         <Form.Check
@@ -83,7 +107,6 @@ const Step2 = ({ formData, handleInputChange, handlePincodeChange, handleNext, h
           onChange={handleInputChange}
         />
       </Form.Group>
-
       <div className="d-flex justify-content-between mt-3">
         <Button variant="secondary" onClick={handlePrev}>
           Previous
