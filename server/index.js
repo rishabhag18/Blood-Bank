@@ -8,7 +8,7 @@ const PORT = 3000;
 
 // Middleware
 const corsOptions = {
-    origin: 'http://localhost:5173', // Replace with your frontend origin if necessary
+    origin: 'http://localhost:5173', 
     optionsSuccessStatus: 200,
   };
   
