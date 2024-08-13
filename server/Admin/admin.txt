@@ -1,0 +1,1 @@
+It will contain admin realted data like api keys, passwords, files,etc.
