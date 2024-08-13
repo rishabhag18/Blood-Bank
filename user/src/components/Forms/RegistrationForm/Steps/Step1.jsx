@@ -1,4 +1,3 @@
-// Step1.js
 import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
