@@ -1,8 +1,10 @@
 //require('dotenv').config();
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+import {dirname} from "path";
 const app = express();
 const PORT = 3000;
 
@@ -15,10 +17,15 @@ const corsOptions = {
   app.use(cors(corsOptions));
   
 app.use(bodyParser.json()); // Parse incoming request bodies as JSON
+const _dirname = dirname(fileURLToPath(import.meta.url));
 
+mongoose.connect("mongodb://localhost:27017/donorsDB");
 // Import Routes
-const registrationRoutes = require('./Routes/registration');
+import registrationRoutes from './Routes/registration.js';
 
+app.get("/",(req,res)=>{
+  res.sendFile(_dirname+"/index.html")
+})
 // Use Routes
 app.use('/api', registrationRoutes);
 
