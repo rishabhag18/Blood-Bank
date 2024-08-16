@@ -37,7 +37,7 @@ const Step1 = ({ formData, handleInputChange, handleNext }) => {
           <Form.Group controlId="mobileNumber">
             <Form.Label>Mobile Number</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="mobileNumber"
               value={formData.mobileNumber}
               onChange={handleInputChange}
