@@ -33,7 +33,7 @@ router.post('/register', async(req, res) => {
       userData: formData,
     });
     await donor.save();
-    console.log(await Donor.find({firstName:"Rishabh"}));
+    console.log(await Donor.find({bloodGroup:"O+"}));
   }catch{
     res.status(501).json({
       message: 'Error Insering the Data',
