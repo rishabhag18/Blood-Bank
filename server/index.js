@@ -8,6 +8,7 @@ import {dirname} from "path";
 const app = express();
 const PORT = 3000;
 
+// dotenv.config();
 // Middleware
 const corsOptions = {
     origin: 'http://localhost:5173', 
@@ -22,6 +23,11 @@ const _dirname = dirname(fileURLToPath(import.meta.url));
 mongoose.connect("mongodb://localhost:27017/donorsDB");
 // Import Routes
 import registrationRoutes from './Routes/registration.js';
+
+// Middleware to parse JSON
+app.use(express.json());
+
+// Route to send OTP
 
 app.get("/",(req,res)=>{
   res.sendFile(_dirname+"/index.html")
