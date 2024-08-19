@@ -47,28 +47,29 @@ const verifyUser = () => {
                 setLoading(false);
             });
     }
-
+ 
     return (
         <section className="flex items-center justify-center h-screen">
             <div>
                 <Toaster toastOptions = {{duration:4000}}/>
                 <div id="recaptcha-container"></div>
                 {user ? (
-                <h2 className="text-center font-medium text-2xl mb-6">
+                    <h2 className="text-center font-medium text-2xl mb-6">
                     Login Success
-                </h2>
-                ) : (
-                    <div className="w-80 flexflex-col gap-4 rounded-lg p-4">
-                        {showOTP ? (
-                            <>
-                            <div className="bg-white w-fit mx-auto p-4 rouned-full">
-                                <BsFillShieldLockFill size={30}/>
-                            </div>
-                            <label htmlFor="otp" className = "font-bold text-xl text-white text-center">
-                                Enter your OTP
-                            </label>
-                            </>
-                        )}
+                    </h2>
+                    ) : (
+                        <div className="w-80 flexflex-col gap-4 rounded-lg p-4">
+                            {showOTP ? (
+                                <>
+                                    <div className="bg-white w-fit mx-auto p-4 rouned-full">
+                                        <BsFillShieldLockFill size={30}/>
+                                    </div>
+                                    <label htmlFor="otp" className = "font-bold text-xl text-white text-center">
+                                        Enter your OTP
+                                    </label>
+                                </>
+                                    ):null
+                            }
                     </div>
                     )}
             </div>
