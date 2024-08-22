@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import VerifyUser from "./Steps/otpStep";
+// import VerifyUser from "./Steps/otpStep";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
@@ -71,7 +71,7 @@ const RegistrationForm = () => {
             ...formData,
             state: "",
             district: "",
-            area: Region,
+            // area: Region,
           });
         }
       } catch (error) {
