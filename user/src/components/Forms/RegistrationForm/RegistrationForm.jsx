@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import verifyUser from "./Steps/otpStep";
+import verifyUser from "./Steps/OtpStep";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
