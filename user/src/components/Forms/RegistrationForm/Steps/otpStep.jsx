@@ -1,4 +1,4 @@
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { signInWithPhoneNumber, RecaptchaVerifier } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "./firebaseConfig";
 import { toast, Toaster } from "react-hot-toast";
@@ -14,47 +14,64 @@ const VerifyUser = () => {
     const [loading, setLoading] = useState(false);
     const [showOTP, setShowOTP] = useState(false);
     const [user, setUser] = useState(null);
-    const [recaptchaVerifier, setRecaptchaVerifier] = useState(null);
+    // const [recaptchaVerifier, setRecaptchaVerifier] = useState(null);
     const [confirmationResult, setConfirmationResult] = useState(null);
 
     function onCaptchVerify() {
-        if (!recaptchaVerifier) {
-            const verifier = new RecaptchaVerifier(
+        console.log(auth)
+        if(!window.recaptchaVerifier) {
+            window.recaptchaVerifier = new RecaptchaVerifier(
+                auth,
                 "recaptcha-container",
                 {
                     size: "invisible",
                     callback: (response) => {
+                        console.log(response);
                         onSignup();
                     },
                     "expired-callback": () => {
                         toast.error("reCAPTCHA expired. Please try again.");
                     },
                 },
-                auth
             );
-            verifier.render().then(() => {
-                setRecaptchaVerifier(verifier);
-            }).catch((error) => {
-                console.error("Error initializing reCAPTCHA:", error);
-                toast.error("Failed to initialize reCAPTCHA.");
-            });
+            window.recaptchaVerifier.render().then((widgetId) => {
+                window.recaptchaWidgetId = widgetId;
+            })
+                .catch((error) => {
+                    console.error("Error initializing reCAPTCHA:", error);
+                    toast.error("Failed to initialize reCAPTCHA.");
+                });
         }
+
     }
 
     const onSignup = async () => {
         setLoading(true);
         onCaptchVerify();
 
-        const appVerifier = recaptchaVerifier;
+        const appVerifier = window.recaptchaVerifier;
+        if(!appVerifier) return toast.error("")
+        // const appVerifier = window.recaptchaVerifier;
+        // console.log(auth);
 
         const formatPh = "+" + ph;
+        console.log(auth);
+        console.log(formatPh);
+        console.log(appVerifier);
         try {
             const result = await signInWithPhoneNumber(auth, formatPh, appVerifier);
+            console.log(result)
             setConfirmationResult(result);
             setLoading(false);
             setShowOTP(true);
             toast.success("OTP sent successfully");
         } catch (error) {
+            grecaptcha.reset(window.recaptchaWidgetId);
+
+            // Or, if you haven't stored the widget ID:
+            window.recaptchaVerifier.render().then(function (widgetId) {
+                grecaptcha.reset(widgetId);
+            });
             console.error("Error sending OTP:", error);
             toast.error("Failed to send OTP. Please try again.");
             setLoading(false);
@@ -148,6 +165,7 @@ const VerifyUser = () => {
                                     )}
                                     <span>Send code via SMS</span>
                                 </button>
+                                {/* <div id="recaptcha"></div> */}
                             </>
                         )}
                     </div>
@@ -158,3 +176,4 @@ const VerifyUser = () => {
 };
 
 export default VerifyUser;
+
